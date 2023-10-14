@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "9463559406",
+    "project_id": "dghcafeadmin",
+    "storage_bucket": "dghcafeadmin.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:9463559406:android:e4121be25e9d464964efff",
+        "android_client_info": {
+          "package_name": "kr.co.bsd.dghcafemanage"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB66S1xBfddHBT6dyuXJmnlIhR-XBA2zKY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
