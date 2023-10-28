@@ -31,6 +31,8 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
+
         FirebaseApp.initializeApp(this)
         val database =
             Firebase.database("https://dghcafeadmin-default-rtdb.asia-southeast1.firebasedatabase.app/")
@@ -97,8 +99,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         //this is temporary setting, update later
-        var userName : String = "박준성"
-
+        var userName : String = intent.getStringExtra("id").toString()
 
         //insert user
         usersRef.child(userName).get().addOnSuccessListener {
