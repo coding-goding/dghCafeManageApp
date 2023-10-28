@@ -4,6 +4,7 @@ class User {
     var name : String = ""
     var password : String = ""
     var assigned : Boolean = false
+    var assignTime : String = ""
 
     constructor()
 

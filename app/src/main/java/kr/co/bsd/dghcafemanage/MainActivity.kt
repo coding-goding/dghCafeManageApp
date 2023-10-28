@@ -78,7 +78,16 @@ class MainActivity : AppCompatActivity() {
                             count = i+1
                         }
                     }
-                    wholeMenu += a.substring(count)
+                    if(menu.mainMenu[countMainA].toString() == countMainB.toString()) {
+                        wholeMenu += '<'
+                        wholeMenu += a.substring(count)
+                        wholeMenu += '>'
+                        countMainA += 2
+                    }
+                    else {
+                        wholeMenu += a.substring(count)
+                    }
+
                     binding.menuText.text = wholeMenu
                 }
             }
@@ -111,9 +120,12 @@ class MainActivity : AppCompatActivity() {
                 it.getValue(User::class.java)?.let { user ->
                     if(user.assigned) {
                         binding.assignTextB.visibility = View.VISIBLE
+                        binding.assignTextC.text = "인증 시각 : " + user.assignTime
+                        binding.assignTextC.visibility = View.VISIBLE
                     }
                     else {
                         binding.assignTextB.visibility = View.INVISIBLE
+                        binding.assignTextC.visibility = View.INVISIBLE
                     }
                 }
             }
@@ -127,9 +139,15 @@ class MainActivity : AppCompatActivity() {
                         }
                         else {
                             val password : String = binding.passwordEditText.text.toString()
-                            if(binding.passwordEditText.text.toString() == user.password) {
-                                binding.assignTextB.visibility = View.VISIBLE
+                            if(binding.passwordEditText.text.toString() == user.password) {  // password correct
                                 usersRef.child(userName).child("assigned").setValue(true)
+                                val currentTime : Long = System.currentTimeMillis()
+                                val dataFormat = SimpleDateFormat("HH:mm")
+                                var t : String = dataFormat.format(currentTime)
+                                usersRef.child(userName).child("assignTime").setValue(t)
+                                binding.assignTextB.visibility = View.VISIBLE
+                                binding.assignTextC.text = "인증 시각 : " + t
+                                binding.assignTextC.visibility = View.VISIBLE
                             }
                             else {
                                 Toast.makeText(this.applicationContext,"비밀번호가 일치하지 않습니다.", Toast.LENGTH_SHORT).show()
