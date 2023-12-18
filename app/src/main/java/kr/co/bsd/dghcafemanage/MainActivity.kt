@@ -61,30 +61,25 @@ class MainActivity : AppCompatActivity() {
             if (it.exists()) {
                 it.getValue(Menu::class.java)?.let { menu ->
                     var count : Int = 0
-                    var countMainA : Int = 0
-                    var countMainB : Int = 1
                     var a : String = menu.a
                     for (i : Int in 0..a.length-1) {
                         if(a[i] == '/') {
-                            if(menu.mainMenu[countMainA].toString() == countMainB.toString()) {
+                            if(menu.mainMenu == count+1) {
                                 wholeMenu += '<'
                                 wholeMenu += a.substring(count until i)
                                 wholeMenu += '>'
-                                countMainA += 2
                             }
                             else {
                                 wholeMenu += a.substring(count until i)
                             }
-                            countMainB++
                             wholeMenu += '\n'
                             count = i+1
                         }
                     }
-                    if(menu.mainMenu[countMainA].toString() == countMainB.toString()) {
+                    if(menu.mainMenu == count+1) {
                         wholeMenu += '<'
                         wholeMenu += a.substring(count)
                         wholeMenu += '>'
-                        countMainA += 2
                     }
                     else {
                         wholeMenu += a.substring(count)
