@@ -144,6 +144,10 @@ class MainActivity : AppCompatActivity() {
                         startActivity(intent)
                         finish()
                     })
+                .setNegativeButton("취소",
+                    DialogInterface.OnClickListener { dialog, id ->
+
+                    })
             // 다이얼로그를 띄워주기
             builder.show()
         }
