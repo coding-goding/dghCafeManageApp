@@ -45,27 +45,15 @@
             android:textSize="48sp" />
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/teacherText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="3dp"
-        android:fontFamily="@font/npsfont_regular"
-        android:text="교직원 ***"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
-
     <LinearLayout
         android:layout_width="0dp"
-        android:layout_height="200dp"
+        android:layout_height="243dp"
         android:layout_marginStart="2dp"
-        android:layout_marginTop="97dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/teacherText">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
 
         <TextView
             android:id="@+id/assignTextA"
@@ -113,5 +101,79 @@
             android:textSize="24sp"
             android:visibility="invisible" />
 
+        <TextView
+            android:id="@+id/assignTextD"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/npsfont_regular"
+            android:text="이번 달 식사 횟수 : "
+            android:textColor="#D10909"
+            android:textSize="24sp"
+            android:visibility="invisible" />
+
     </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="0dp"
+        android:layout_height="76dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="2dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
+
+        <TextView
+            android:id="@+id/numberText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/npsfont_regular"
+            android:text="식사 인원 : 1명"
+            android:textSize="24sp" />
+
+        <SeekBar
+            android:id="@+id/numSeekbar"
+            style="@style/Widget.AppCompat.SeekBar.Discrete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="10"
+            android:progress="0" />
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout2"
+        android:layout_width="0dp"
+        android:layout_height="33dp"
+        android:layout_marginEnd="2dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+
+        <Button
+            android:id="@+id/LogoutButton"
+            android:layout_width="134dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:background="#A5A5A5"
+            android:fontFamily="@font/npsfont_regular"
+            android:text="로그아웃"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/teacherText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="3dp"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/npsfont_regular"
+            android:text="교직원 ***"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

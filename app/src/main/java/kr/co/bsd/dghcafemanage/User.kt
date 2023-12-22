@@ -5,6 +5,9 @@ class User {
     var password : String = ""
     var assigned : Boolean = false
     var assignTime : String = ""
+    var id : String = ""
+    var point : Int = 0
+    var admin : Boolean = false
 
     constructor()
 
