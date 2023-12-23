@@ -68,26 +68,14 @@ class MainActivity : AppCompatActivity() {
                     var a : String = menu.a
                     for (i : Int in 0..a.length-1) {
                         if(a[i] == '/') {
-                            if(menu.mainMenu == count+1) {
-                                wholeMenu += '<'
-                                wholeMenu += a.substring(count until i)
-                                wholeMenu += '>'
-                            }
-                            else {
-                                wholeMenu += a.substring(count until i)
-                            }
+                            wholeMenu += a.substring(count until i)
+
                             wholeMenu += '\n'
                             count = i+1
                         }
                     }
-                    if(menu.mainMenu == count+1) {
-                        wholeMenu += '<'
-                        wholeMenu += a.substring(count)
-                        wholeMenu += '>'
-                    }
-                    else {
-                        wholeMenu += a.substring(count)
-                    }
+                    wholeMenu += a.substring(count)
+
 
                     binding.menuText.text = wholeMenu
                 }
@@ -148,7 +136,6 @@ class MainActivity : AppCompatActivity() {
                     DialogInterface.OnClickListener { dialog, id ->
 
                     })
-            // 다이얼로그를 띄워주기
             builder.show()
         }
         binding.numSeekbar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
@@ -172,21 +159,34 @@ class MainActivity : AppCompatActivity() {
                             Toast.makeText(this.applicationContext,"이미 인증되었습니다.", Toast.LENGTH_SHORT).show()
                         }
                         else {
+
                             val password : String = binding.passwordEditText.text.toString()
                             if(binding.passwordEditText.text.toString() == user.password) {  // password correct
-                                binding.passwordEditText.setText("")
-                                usersRef.child(userName).child("assigned").setValue(true)
-                                val currentTime : Long = System.currentTimeMillis()
-                                val dataFormat = SimpleDateFormat("HH:mm")
-                                var t : String = dataFormat.format(currentTime)
-                                val point : Int = user.point
-                                usersRef.child(userName).child("assignTime").setValue(t)
-                                usersRef.child(userName).child("point").setValue(point+setPoint+1)
-                                binding.assignTextB.visibility = View.VISIBLE
-                                binding.assignTextC.text = "인증 시각 : " + t
-                                binding.assignTextD.text = "이번 달 식사 횟수 : " + (point+setPoint+1)  + "회"
-                                binding.assignTextC.visibility = View.VISIBLE
-                                binding.assignTextD.visibility = View.VISIBLE
+                                val builder = AlertDialog.Builder(this)
+                                builder.setTitle("확인")
+                                    .setMessage("식사 인원 : " + (setPoint+1) + "명\n인증하시겠습니까?")
+                                    .setPositiveButton("확인",
+                                        DialogInterface.OnClickListener { dialog, id ->
+                                            binding.passwordEditText.setText("")
+                                            usersRef.child(userName).child("assigned").setValue(true)
+                                            val currentTime : Long = System.currentTimeMillis()
+                                            val dataFormat = SimpleDateFormat("HH:mm")
+                                            var t : String = dataFormat.format(currentTime)
+                                            val point : Int = user.point
+                                            usersRef.child(userName).child("assignTime").setValue(t)
+                                            usersRef.child(userName).child("point").setValue(point+setPoint+1)
+                                            binding.assignTextB.visibility = View.VISIBLE
+                                            binding.assignTextC.text = "인증 시각 : " + t
+                                            binding.assignTextD.text = "이번 달 식사 횟수 : " + (point+setPoint+1)  + "회"
+                                            binding.assignTextC.visibility = View.VISIBLE
+                                            binding.assignTextD.visibility = View.VISIBLE
+                                        })
+                                    .setNegativeButton("취소",
+                                        DialogInterface.OnClickListener { dialog, id ->
+
+                                        })
+                                builder.show()
+
                             }
                             else {
                                 Toast.makeText(this.applicationContext,"비밀번호가 일치하지 않습니다.", Toast.LENGTH_SHORT).show()
