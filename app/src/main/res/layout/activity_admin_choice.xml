@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AdminChoiceActivity">
+
+    <TextView
+        android:id="@+id/jtext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="89dp"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="90dp"
+        android:fontFamily="@font/npsfont_regular"
+        android:text="관리자 계정"
+        android:textSize="48sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="342dp"
+        android:layout_marginTop="129dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/jtext">
+
+        <TextView
+            android:id="@+id/jtext2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/npsfont_regular"
+            android:text="관리자 ***"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/cafeButton"
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+            android:fontFamily="@font/npsfont_regular"
+            android:text="식사 메뉴"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/adminButton"
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+            android:fontFamily="@font/npsfont_regular"
+            android:text="관리자 메뉴"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/logoutButton"
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+            android:fontFamily="@font/npsfont_regular"
+            android:text="로그아웃"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
