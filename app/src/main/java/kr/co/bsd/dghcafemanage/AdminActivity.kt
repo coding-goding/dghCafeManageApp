@@ -237,7 +237,7 @@ class AdminActivity : AppCompatActivity() {
                         }
                         val builder = AlertDialog.Builder(this)
                         builder.setTitle("교직원 정보 편집")
-                            .setMessage("이미 존재하는 교직원입니다.\n이름 : $name\n고유 ID : $pid -> ${binding.editTextID.text}\n비밀번호 : $password -> ${binding.editTextPw.text}\n관리자 권한 : $ad -> ${binding.editTextAdmin.text}\n총 식사 횟수 :  $point -> ${binding.editTextPoint.text}\n일일 식사 여부 :  $ass -> ${binding.editTextAssign.text}\n편집하시겠습니까?")
+                            .setMessage("이미 존재하는 교직원입니다.\n이름 : ${binding.editTextName.text}\n고유 ID : $pid -> ${binding.editTextID.text}\n비밀번호 : $password -> ${binding.editTextPw.text}\n관리자 권한 : $ad -> ${binding.editTextAdmin.text}\n총 식사 횟수 :  $point -> ${binding.editTextPoint.text}\n일일 식사 여부 :  $ass -> ${binding.editTextAssign.text}\n편집하시겠습니까?")
                             .setPositiveButton("확인",
                                 DialogInterface.OnClickListener { dialog, id ->
                                     usersRef.child(name).child("password").setValue(binding.editTextPw.text.toString())
@@ -274,7 +274,7 @@ class AdminActivity : AppCompatActivity() {
                     var nm = binding.editTextName.text.toString()
                     val builder = AlertDialog.Builder(this)
                     builder.setTitle("신규 교직원 추가")
-                        .setMessage("새로운 교직원을 추가합니다.\n이름 : $name\n고유 ID : ${binding.editTextID.text}\n비밀번호 : ${binding.editTextPw.text}\n관리자 권한 : ${binding.editTextAdmin.text}\n총 식사 횟수 : ${binding.editTextPoint.text}\n일일 식사 여부 : ${binding.editTextAssign.text}\n추가하시겠습니까?")
+                        .setMessage("새로운 교직원을 추가합니다.\n이름 : $nm\n고유 ID : ${binding.editTextID.text}\n비밀번호 : ${binding.editTextPw.text}\n관리자 권한 : ${binding.editTextAdmin.text}\n총 식사 횟수 : ${binding.editTextPoint.text}\n일일 식사 여부 : ${binding.editTextAssign.text}\n추가하시겠습니까?")
                         .setPositiveButton("확인",
                             DialogInterface.OnClickListener { dialog, id ->
                                 usersRef.child(nm).child("name").setValue(binding.editTextName.text.toString())
@@ -343,6 +343,13 @@ class AdminActivity : AppCompatActivity() {
 
                     })
             builder.show()
+        }
+
+        binding.monthlyButton.setOnClickListener {
+            val intent = Intent(this, MonthPointActivity::class.java)
+            intent.putExtra("id", name)
+            intent.putExtra("password", password)
+            startActivity(intent)
         }
     }
 
